@@ -22,7 +22,7 @@
             $sqlquery="INSERT INTO users VALUES('$email', '$password')";
             $result = QueryCon($connection, $sqlquery);
             if($result){
-                $_SESSION['email'] = $email;
+                $email = $_SESSION['email'];
                 header('location: main.php');
             }
             else{
