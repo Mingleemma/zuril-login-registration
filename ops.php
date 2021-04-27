@@ -1,16 +1,33 @@
 <?php
-    include_once 'connection.php';
+    include 'connection.php';
     session_start();
 
     if(isset($_POST)){
         if(isset($_POST['login'])){
-            $sqlquery="SELECT count(*) as ct FROM users WHERE email = '$email'";
-            $result=$connection->query($sqlquery);
-            echo $result;
+            $email = $_POST['email'];
+            $sqlquery="SELECT * FROM users WHERE email = '$email'";
+            $result = QueryCon($connection, $sqlquery);
+            if($result){
+                $_SESSION['email'] = $email;
+                header('location: main.php');
+            }
+            else{
+                header('location: index.php');
+            }
             
         }
         elseif(isset($_POST['signup'])){
-            echo "We are here";
+            $email = $_POST['email'];
+            $passwd = $_POST['password'];
+            $sqlquery="INSERT INTO zuri VALUES('$email', '$password')";
+            $result = QueryCon($connection, $sqlquery);
+            if($result){
+                $_SESSION['email'] = $email;
+                header('location: main.php');
+            }
+            else{
+                header('location: signup.php');
+            }
         }  
     }
 ?>
