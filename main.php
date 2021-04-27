@@ -2,8 +2,8 @@
     include_once 'connection.php';
     session_start();
 
-    // if( $_SESSION['email'] ){
-    // $firstname = $_SESSION['email'];
+    if( $_SESSION['email'] ){
+    $firstname = $_SESSION['email'];
 
 ?> 
     <!DOCTYPE html>
@@ -19,12 +19,12 @@
     <center><h2>Welcome to Course Dashboard</h2><center>
     <div style="content-align:right">
         Add New Course<br>
-        <form action="" method="post">
+        <form action="ops.php" method="post">
             <input type="text" name="coursecode" placeholder="Enter a new course code" required>
 			&bull;
             <input type="text" name="coursename" placeholder="Enter a new course name" required>
             <br><br>
-            <input type="button" value="SUBMIT">
+            <input type="submit" value="SUBMIT" name="newcourse">
         </form>
     </div>
 		<p style="color:red; text-align: center">
@@ -47,8 +47,8 @@
 	</body>
 </html>
 <?php
-    // }
-    // else{
-    //     header('location: index.php');
-    // }
+    }
+    else{
+        header('location: index.php');
+    }
 ?>
