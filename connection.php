@@ -3,8 +3,8 @@
 function OpenCon(){
  $dbhost = "localhost";
  $dbuser = "root";
- $dbpass = "2e1class";
- $db = "zuridb";
+ $dbpass = "";
+ $db = "zuri";
 
  $connection = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
  
